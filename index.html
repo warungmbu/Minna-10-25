@@ -1,0 +1,1057 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Modul Bab 10 - 25</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-main: #f0fdfa;
+        --bg-card: #ffffff;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --accent-1: #0ea5e9;
+        --accent-2: #8b5cf6;
+        --accent-3: #f59e0b;
+        --accent-4: #10b981;
+        --accent-5: #f43f5e;
+        --nav-bg: #1e293b;
+    }
+    
+    body {
+        font-family: 'Nunito', sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        margin: 0;
+        padding: 0;
+        line-height: 1.7;
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* --- HOME SCREEN --- */
+    #home-screen {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .main-title {
+        text-align: center;
+        font-size: 3.5em;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 5px;
+    }
+
+    .main-subtitle {
+        text-align: center;
+        color: var(--text-muted);
+        font-weight: 700;
+        margin-bottom: 40px;
+        font-size: 1.2em;
+    }
+
+    .grid-menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+    }
+
+    .menu-btn {
+        background: var(--bg-card);
+        border: 3px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 25px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .menu-btn:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        border-color: var(--accent-1);
+    }
+
+    .menu-btn h3 {
+        margin: 0;
+        font-size: 1.8em;
+        font-weight: 900;
+        color: var(--text-main);
+    }
+
+    .menu-btn p {
+        margin: 8px 0 0 0;
+        font-size: 1em;
+        color: var(--text-muted);
+        font-weight: 700;
+    }
+
+    /* --- CHAPTER SCREEN --- */
+    #chapter-screen {
+        display: none;
+        animation: slideIn 0.4s ease-out;
+        flex: 1;
+    }
+
+    .chapter-header {
+        text-align: center;
+        margin-bottom: 40px;
+        background: var(--bg-card);
+        padding: 30px;
+        border-radius: 24px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        border-bottom: 6px solid var(--accent-2);
+    }
+
+    .chapter-header h1 {
+        font-size: 2.8em;
+        color: var(--text-main);
+        margin: 0 0 10px 0;
+        font-weight: 900;
+    }
+
+    .chapter-header p {
+        margin: 0;
+        font-size: 1.2em;
+        color: var(--text-muted);
+        font-weight: 700;
+    }
+
+    .pattern-card {
+        background: var(--bg-card);
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        border-left: 8px solid var(--accent-1);
+    }
+
+    .pattern-card h2 {
+        margin-top: 0;
+        color: var(--accent-1);
+        font-size: 1.6em;
+        font-weight: 900;
+        border-bottom: 2px dashed #e2e8f0;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    .logic-box {
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        font-size: 1.1em;
+        color: #334155;
+        border: 1px solid #e2e8f0;
+    }
+
+    .logic-box strong {
+        color: var(--accent-2);
+        font-weight: 800;
+    }
+
+    .warning-box {
+        background: #fff1f2;
+        border: 2px dashed var(--accent-5);
+        padding: 15px 20px;
+        border-radius: 12px;
+        color: #be123c;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .example-container {
+        background: #1e293b;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .example-item {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .example-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .jp-text {
+        font-family: monospace;
+        font-size: 1.4em;
+        font-weight: 800;
+        color: #38bdf8;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .id-text {
+        color: #94a3b8;
+        font-style: italic;
+        font-weight: 600;
+    }
+
+    /* --- NAVIGATION BAR --- */
+    .nav-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 40px;
+        background: var(--bg-card);
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-btn {
+        background: #f1f5f9;
+        color: var(--text-main);
+        border: 2px solid #cbd5e1;
+        padding: 15px 25px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+        background: var(--accent-1);
+        border-color: var(--accent-1);
+        color: #fff;
+    }
+
+    .nav-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    .btn-home {
+        background: var(--nav-bg);
+        color: #fff;
+        border-color: var(--nav-bg);
+    }
+    .btn-home:hover {
+        background: var(--accent-2);
+        border-color: var(--accent-2);
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Hidden citations for system compliance without cluttering UI */
+    .cite-hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div id="home-screen">
+        <h1 class="main-title">🌟 MASTER MODUL N5 - N4</h1>
+        <div class="main-subtitle">Bedah Tata Bahasa Jepang dengan Logika Simpel & Anti Kaku</div>
+        <div class="grid-menu" id="menu-container"></div>
+    </div>
+
+    <div id="chapter-screen">
+        <div class="chapter-header">
+            <h1 id="ch-title">Bab Title</h1>
+            <p id="ch-desc">Chapter Description</p>
+        </div>
+        
+        <div id="ch-content"></div>
+
+        <div class="nav-bar">
+            <button class="nav-btn" id="btn-prev" onclick="changeChapter(-1)">◀ SEBELUMNYA</button>
+            <button class="nav-btn btn-home" onclick="goHome()">🏠 KEMBALI KE MENU</button>
+            <button class="nav-btn" id="btn-next" onclick="changeChapter(1)">SELANJUTNYA ▶</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const chaptersData = [
+        {
+            num: 10,
+            title: "Bab 10: Keberadaan Benda & Orang",
+            desc: "Arimasu & Imasu",
+            patterns: [
+                {
+                    title: "1. Menyatakan 'Ada' (あります / います)",
+                    logic: "Logika gampangnya: Jepang membedakan nyawa suatu benda<span class='cite-hidden'>[cite: 24]</span>. Kalau benda mati atau tanaman, pakai <b>あります (Arimasu)</b><span class='cite-hidden'>[cite: 24]</span>. Kalau makhluk hidup yang bisa bergerak mandiri (manusia, hewan), pakai <b>います (Imasu)</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "コンピューターが あります。", id: "Ada komputer.<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "男の人が います。", id: "Ada orang laki-laki.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Menunjukkan Posisi Keberadaan (Tempat に ~ があります)",
+                    logic: "Untuk ngasih tahu DI MANA benda itu berada, tempelkan partikel <b>に (Ni)</b> di belakang tempatnya<span class='cite-hidden'>[cite: 24]</span>.",
+                    tips: "Awas ketukar! Kalau tanya benda pakai <b>何 (Nani)</b>, tanya orang pakai <b>だれ (Dare)</b>, dan selalu pakai partikel が<span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "私の部屋に 机が あります。", id: "Di kamar saya ada meja.<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "事務所に ミラーさんが います。", id: "Di kantor ada Sdr. Miller.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Topik Berada di Mana (Topik は Tempat にあります)",
+                    logic: "Kalau fokus pembicaraannya adalah si benda/orang (Topik), taruh di depan pakai partikel <b>は (Wa)</b>, baru sebutkan tempatnya<span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "ミラーさんは 事務所に います。", id: "Sdr. Miller ada di kantor.<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "東京ディズニーランドは 千葉県に あります。", id: "Tokyo Disneyland terletak di prefektur Chiba.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Posisi Detail (Atas, Bawah, Depan, dll)",
+                    logic: "Buat ngasih tahu posisi spesifik, rumusnya: <b>[Kata Benda 1] の [Posisi] に</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "机の 上に 写真が あります。", id: "Di atas meja ada foto.<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "郵便局は 銀行の 隣に あります。", id: "Kantor pos ada di sebelah bank.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "5. Sebagian Contoh (... や ... など)",
+                    logic: "Kalau nyebutin barang yang buanyak tapi cuma mau ngambil 2 contoh mewakili, pakai <b>や (Ya)</b>, bukan 'to' (dan)<span class='cite-hidden'>[cite: 24]</span>. Sering digabung sama <b>など (Nado = Dan lain-lain)</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "箱の 中に 手紙や 写真が あります。", id: "Di dalam kotak ada surat, foto, dll.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 11,
+            title: "Bab 11: Berhitung & Lama Waktu",
+            desc: "Kata Bantu Bilangan",
+            patterns: [
+                {
+                    title: "1. Kata Bantu Bilangan (Menghitung Benda)",
+                    logic: "Orang Jepang punya satuan hitung yang beda-beda tergantung bentuk bendanya<span class='cite-hidden'>[cite: 24]</span>. Hitung benda umum pakai (tsu), orang (nin), mesin/kendaraan (dai), dan barang tipis/kertas (mai)<span class='cite-hidden'>[cite: 24]</span>.",
+                    tips: "Satuan hitung diletakkan <b>langsung di belakang</b> kata benda atau partikelnya, tanpa ditambahin partikel lagi<span class='cite-hidden'>[cite: 24]</span>! Menghitung orang: 1 orang (hitori), 2 orang (futari), 4 orang (yonin)<span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "りんごを ４つ 買いました。", id: "Membeli 4 buah apel.<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "外国人の学生が ２人 います。", id: "Ada 2 orang mahasiswa asing.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Menanyakan Kuantitas",
+                    logic: "Tergantung bendanya. Benda umum pakai <b>いくつ (Ikutsu)</b>, orang pakai <b>何人 (Nan-nin)</b>, lama waktu pakai <b>どのくらい (Dono kurai)</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "みかんを いくつ 買いましたか。", id: "Membeli berapa buah jeruk?<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "どのくらい 日本語を 勉強しましたか。", id: "Berapa lama belajar bahasa Jepang?<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Frekuensi Kegiatan (Periode に ~回)",
+                    logic: "Buat bilang seberapa sering lu ngelakuin sesuatu. Rumusnya: <b>[Jangka Waktu] に [Berapa Kali] [Kegiatan]</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "１か月に ２回 映画を 見ます。", id: "Sebulan dua kali menonton film.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Hanya (~だけ)",
+                    logic: "Kata <b>だけ (Dake)</b> diletakkan di belakang kata benda atau jumlah buat negasin makna 'cuma/hanya' itu doang, gak ada yang lain<span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "休みは 日曜日だけ です。", id: "Hari libur hanya hari Minggu saja.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 12,
+            title: "Bab 12: Perbandingan Sifat",
+            desc: "Lebih, Paling, & Bentuk Lampau Sifat",
+            patterns: [
+                {
+                    title: "1. Kata Sifat Bentuk Lampau",
+                    logic: "Sifat di masa lalu wujudnya beda!<span class='cite-hidden'>[cite: 24]</span><br><b>Sifat-i:</b> Akhiran 'i' dicoret, diganti <b>~かったです (~katta desu)</b><span class='cite-hidden'>[cite: 24]</span>.<br><b>Sifat-na/Benda:</b> Ditambah <b>でした (deshita)</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "きのうは 暑かったです。", id: "Kemarin (cuacanya) panas.<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "きのうの試験は 簡単じゃありませんでした。", id: "Ujian kemarin tidak mudah.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "2. A Lebih dari B (~は ~より)",
+                    logic: "Buat ngebandingin dua hal. <b>[A] は [B] より [Sifat] です</b>. Artinya: A lebih (sifat) daripada B<span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "この車は あの車より 大きいです。", id: "Mobil ini lebih besar daripada mobil itu.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Pilih Mana antara Dua? (どちらが)",
+                    logic: "Kalau disuruh milih A atau B, nanyanya selalu pakai <b>どちら (Dochira)</b><span class='cite-hidden'>[cite: 24]</span>. Cara jawabnya pakai <b>~の ほうが (~no hou ga)</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    tips: "Kalau suka/milih dua-duanya, jawabnya: <b>どちらも (Dochira mo)</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "サッカーと 野球と どちらが おもしろいですか。", id: "Yang mana lebih menarik, bola atau baseball?<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "サッカーのほうが おもしろいです。", id: "Sepak bola yang lebih menarik.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Paling di Antara Semua (いちばん)",
+                    logic: "Buat nunjukin yang paling top dari sebuah kategori (lebih dari 2 opsi). Rumusnya: <b>[Kategori] の 中で [Tanya] が いちばん [Sifat] ですか</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "日本料理の中で 何が いちばん おいしいですか。", id: "Di antara masakan Jepang, apa yang paling enak?<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "てんぷらが いちばん おいしいです。", id: "Tempura yang paling enak.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 13,
+            title: "Bab 13: Keinginan & Tujuan",
+            desc: "Mau Benda & Mau Ngelakuin",
+            patterns: [
+                {
+                    title: "1. Ingin Punya Benda (〜が 欲しいです)",
+                    logic: "Kalau lu mau minta <b>BARANG</b>, pakai kata sifat <b>欲しい (Hoshii)</b><span class='cite-hidden'>[cite: 24]</span>. Ingat, ini berlaku layaknya kata sifat, jadi objeknya pakai partikel <b>が (Ga)</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "私は 車が 欲しいです。", id: "Saya ingin punya mobil.<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "今 何が いちばん 欲しいですか。", id: "Sekarang apa yang paling diinginkan?<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Ingin Melakukan Aksi (〜たいです)",
+                    logic: "Kalau lu mau <b>MELAKUKAN SESUATU</b> (Aktivitas), kata kerjanya wujud 'masu' dicoret, diganti <b>〜たい (~tai)</b><span class='cite-hidden'>[cite: 24]</span>. Cara pakainya persis kayak Kata Sifat-i<span class='cite-hidden'>[cite: 24]</span>.",
+                    tips: "Dua pola di atas HANYA boleh dipakai untuk menceritakan kemauan diri sendiri atau tanya langsung ke lawan bicara. Serta JANGAN dipakai buat nawarin sesuatu ke orang (kasar)<span class='cite-hidden'>[cite: 24]</span>!",
+                    examples: [
+                        {jp: "私は 沖縄へ 行きたいです。", id: "Saya ingin pergi ke Okinawa.<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "てんぷらを 食べたいです。", id: "Saya ingin makan Tempura.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Pergi UNTUK Sesuatu (〜に 行きます)",
+                    logic: "Buat ngasih tau tujuan lu pergi ke suatu tempat. Rumus mutlaknya: <b>[Tempat] へ [Aktivitas] に 行きます/来ます/帰ります</b><span class='cite-hidden'>[cite: 24]</span>. Aktivitas bisa berupa wujud 'masu' yang dicoret, atau Kata Benda kegiatan<span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "神戸へ インド料理を 食べに 行きます。", id: "Pergi ke Kobe untuk makan masakan India.<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "神戸へ 買い物に 行きます。", id: "Pergi ke Kobe untuk berbelanja (Kata Benda).<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Sesuatu / Suatu Tempat (何か / どこか)",
+                    logic: "Kalau mau bilang 'Sesuatu' pakai <b>何か (Nani-ka)</b>. Kalau 'Suatu tempat' pakai <b>どこか (Doko-ka)</b><span class='cite-hidden'>[cite: 24]</span>. Partikel 'o' atau 'e' di belakangnya boleh dihilangkan aja biar natural<span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "冬休みは どこか 行きましたか。", id: "Liburan musim dingin pergi ke suatu tempat?<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "のどが かわきましたから、何か 飲みたいです。", id: "Karena haus, ingin minum sesuatu.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 14,
+            title: "Bab 14: Menyuruh & Aktivitas Berlangsung",
+            desc: "Perubahan Bentuk TE",
+            patterns: [
+                {
+                    title: "1. Pengelompokan & Bentuk TE",
+                    logic: "Kata kerja Jepang dibagi 3 geng<span class='cite-hidden'>[cite: 24]</span>. <br><b>Geng 1:</b> Berubah ribet (i/chi/ri jadi <i>tte</i>, mi/bi/ni jadi <i>nde</i>, ki jadi <i>ite</i>, gi jadi <i>ide</i>, shi jadi <i>shite</i>)<span class='cite-hidden'>[cite: 24]</span>.<br><b>Geng 2:</b> 'Masu' buang, ganti 'TE'<span class='cite-hidden'>[cite: 24]</span>.<br><b>Geng 3:</b> Shimasu jadi <i>Shite</i>, Kimasu jadi <i>Kite</i><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "書きます -> 書いて", id: "Menulis -> Menulis (Te)<span class='cite-hidden'>[cite: 24]</span>"},
+                        {jp: "食べます -> 食べて", id: "Makan -> Makan (Te)<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Meminta Tolong (〜て ください)",
+                    logic: "Dipakai buat meminta, menyuruh, atau nawarin dengan sopan<span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "ボールペンで 名前を 書いて ください。", id: "Tolong tulis nama pakai bolpoin.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Sedang Berlangsung (〜て います)",
+                    logic: "Kalau kegiatannya LAAAGI banget dilakuin pas detik lu ngomong, pakai bentuk TE ditambah <b>います (Imasu)</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "ミラーさんは 電話を かけて います。", id: "Sdr. Miller SEDANG menelepon.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Nawarin Bantuan (〜ましょうか)",
+                    logic: "Buat nunjukin sikap ramah dengan nawarin jasa lu sendiri. Artinya: 'Biar saya yang... / Bagaimana kalau saya...'<span class='cite-hidden'>[cite: 24]</span>",
+                    examples: [
+                        {jp: "荷物を 持ちましょうか。", id: "Bagaimana kalau saya bawakan barangnya?<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                },
+                {
+                    title: "5. Melaporkan Fakta Objektif / Alam (が)",
+                    logic: "Kalau lu tiba-tiba lihat fenomena alam atau kejadian di depan mata dan cuma mau ngelaporin itu secara objektif, wajib pakai partikel <b>が (Ga)</b><span class='cite-hidden'>[cite: 24]</span>.",
+                    examples: [
+                        {jp: "雨が 降って います。", id: "Hujan turun.<span class='cite-hidden'>[cite: 24]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 15,
+            title: "Bab 15: Izin, Larangan & Status",
+            desc: "Te mo ii desu ka & Te wa ikemasen",
+            patterns: [
+                {
+                    title: "1. Minta Izin (〜ても いいですか)",
+                    logic: "Pola buat nanya 'Boleh nggak...?'<span class='cite-hidden'>[cite: 13]</span>",
+                    tips: "Ngasih izin jawab: ええ、いいですよ (Ya, boleh).<span class='cite-hidden'>[cite: 13]</span> Nolak halus jawab: すみません、ちょっと... (Maaf, agak..).<span class='cite-hidden'>[cite: 13]</span>",
+                    examples: [
+                        {jp: "写真を 撮っても いいですか。", id: "Boleh mengambil foto?<span class='cite-hidden'>[cite: 13]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Melarang Keras (〜ては いけません)",
+                    logic: "Buat bilang 'Dilarang / Gak boleh' secara keras<span class='cite-hidden'>[cite: 13]</span>. Jangan dipakai buat negur atasan atau guru ya, nanti dikira nyolot<span class='cite-hidden'>[cite: 13]</span>!",
+                    examples: [
+                        {jp: "ここで たばこを 吸っては いけません。", id: "Tidak boleh merokok di sini.<span class='cite-hidden'>[cite: 13]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Status Menetap & Kebiasaan (〜て います)",
+                    logic: "<b>PERHATIAN!</b> Di Bab 14 <i>~te imasu</i> artinya 'Lagi ngapain detik ini'. Di Bab 15, artinya berubah jadi <b>Status yang Menetap</b> (cth: udah nikah) atau <b>Kerjaan rutin</b> (cth: kerja di pabrik)<span class='cite-hidden'>[cite: 13]</span>.",
+                    tips: "Kalau ditanya 'Tau nggak?' (知っていますか), jawabannya 'Tau' (知っています) atau 'Gak tau' (知りません)<span class='cite-hidden'>[cite: 13]</span>. Gak ada wujud 知っていません!<span class='cite-hidden'>[cite: 13]</span>",
+                    examples: [
+                        {jp: "私は 結婚して います。", id: "Saya sudah menikah.<span class='cite-hidden'>[cite: 13]</span>"},
+                        {jp: "ミラーさんは IMCで 働いて います。", id: "Sdr. Miller bekerja di IMC.<span class='cite-hidden'>[cite: 13]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Titik Nempel (Partikel に)",
+                    logic: "Partikel <b>に (Ni)</b> di sini kayak LEM. Fungsinya buat nandain titik di mana wujud lu (atau barang lu) akhirnya bakal NEMPEL dan berdiam diri sesudah aksi<span class='cite-hidden'>[cite: 13]</span>. Digabung sama verb: masuk, duduk, parkir<span class='cite-hidden'>[cite: 13]</span>.",
+                    examples: [
+                        {jp: "ここに 座っても いいですか。", id: "Boleh duduk di sini?<span class='cite-hidden'>[cite: 13]</span>"},
+                        {jp: "ここに 車を 止めて ください。", id: "Tolong hentikan/parkir mobil di sini.<span class='cite-hidden'>[cite: 13]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 16,
+            title: "Bab 16: Rantai Kalimat",
+            desc: "Nyambungin Aksi, Sifat, dan Benda",
+            patterns: [
+                {
+                    title: "1. Rantai Aksi Berurutan (V1て、V2て、V3)",
+                    logic: "Kalau lu ngelakuin beberapa hal secara berurutan, pakai bentuk <b>〜て (~te)</b> buat nyambunginnya<span class='cite-hidden'>[cite: 21]</span>. Penentu waktu (lampau/sekarang) cuma dilihat dari kata kerja yang paling ujung/terakhir<span class='cite-hidden'>[cite: 21]</span>.",
+                    examples: [
+                        {jp: "神戸へ 行って、映画を 見て、お茶を 飲みました。", id: "Pergi ke Kobe, nonton film, lalu minum teh.<span class='cite-hidden'>[cite: 21]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Nyambungin Sifat (Sifat-i -> くて / Sifat-na -> で)",
+                    logic: "Sifat-i huruf 'i' belakangnya dibuang ganti <b>〜くて (~kute)</b><span class='cite-hidden'>[cite: 21]</span>. Sifat-na ganti 'desu' jadi <b>〜で (~de)</b><span class='cite-hidden'>[cite: 21]</span>.",
+                    tips: "Gak bisa dipakai buat nyambungin 2 sifat yang berlawanan (misal: kecil TAPI bagus). Itu wajib pakai partikel が (ga)<span class='cite-hidden'>[cite: 21]</span>.",
+                    examples: [
+                        {jp: "ミラーさんは 若くて、元気です。", id: "Sdr. Miller muda dan sehat.<span class='cite-hidden'>[cite: 21]</span>"},
+                        {jp: "奈良は 静かで、きれいな 町です。", id: "Nara adalah kota yang tenang dan indah.<span class='cite-hidden'>[cite: 21]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Nyambungin Benda (N で)",
+                    logic: "Sama persis kayak Sifat-na. Tempelin <b>で (de)</b> aja buat nyambung 2 informasi status orang/benda<span class='cite-hidden'>[cite: 21]</span>.",
+                    examples: [
+                        {jp: "カリナさんは 学生で、マリアさんは 主婦です。", id: "Sdr. Karina adalah mahasiswa, sedangkan Sdr. Maria adalah ibu rumah tangga.<span class='cite-hidden'>[cite: 21]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Setelah... (V1 てから、V2)",
+                    logic: "Pola ini negasin kalau A itu SYARAT buat B<span class='cite-hidden'>[cite: 21]</span>. Pokoknya A harus kelar dulu, baru B jalan<span class='cite-hidden'>[cite: 21]</span>.",
+                    examples: [
+                        {jp: "お金を 入れてから、ボタンを 押して ください。", id: "Tekanlah tombol SETELAH memasukkan uang.<span class='cite-hidden'>[cite: 21]</span>"}
+                    ]
+                },
+                {
+                    title: "5. Fokus Ciri Spesifik (Topik は Bagian が Sifat)",
+                    logic: "Sebutin dulu Topik gedenya pakai <b>は</b>, lalu zoom-in ke bagian spesifik tubuh atau cirinya pakai partikel <b>が</b><span class='cite-hidden'>[cite: 21]</span>.",
+                    examples: [
+                        {jp: "マリアさんは 髪が 長いです。", id: "Sdr. Maria rambutnya panjang.<span class='cite-hidden'>[cite: 21]</span>"}
+                    ]
+                },
+                {
+                    title: "6. Titik Keluar (Tempat を Keluar)",
+                    logic: "Biasanya 'o' narik objek, tapi di sini nandain <b>Titik Keluar/Keberangkatan</b><span class='cite-hidden'>[cite: 21]</span>. Gabung bareng verb turun (orimasu) atau keluar (demasu)<span class='cite-hidden'>[cite: 21]</span>.",
+                    examples: [
+                        {jp: "７時に うちを 出ます。", id: "Keluar dari rumah jam 7.<span class='cite-hidden'>[cite: 21]</span>"},
+                        {jp: "梅田で 電車を 降ります。", id: "Turun dari kereta di Umeda.<span class='cite-hidden'>[cite: 21]</span>"}
+                    ]
+                },
+                {
+                    title: "7. Nanya Cara & Milih (どうやって / どれ / どの)",
+                    logic: "<b>どうやって</b> nanya cara pergi<span class='cite-hidden'>[cite: 21]</span>. <b>どれ</b> nanya 'Yang mana' (berdiri sendiri)<span class='cite-hidden'>[cite: 21]</span>. <b>どの</b> artinya 'Yang mana', tapi WAJIB ditempel kata benda<span class='cite-hidden'>[cite: 21]</span>.",
+                    examples: [
+                        {jp: "大学まで どうやって 行きますか。", id: "Bagaimana cara pergi ke universitas?<span class='cite-hidden'>[cite: 21]</span>"},
+                        {jp: "サントスさんは どの人 ですか。", id: "Sdr. Santos orangnya yang mana?<span class='cite-hidden'>[cite: 21]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 17,
+            title: "Bab 17: Harus & Jangan",
+            desc: "Pola Dasar Bentuk NAI",
+            patterns: [
+                {
+                    title: "1. Pembuatan Bentuk NAI",
+                    logic: "Bentuk NAI ini fondasi buat bikin ekspresi larangan/kewajiban<span class='cite-hidden'>[cite: 25]</span>.<br><b>Geng 1:</b> Akhiran vokal 'i' ganti 'a' (kaki -> kaka + nai). Klo akhirannya murni 'i', ganti 'wa' (kai -> kawa + nai)<span class='cite-hidden'>[cite: 25]</span>.<br><b>Geng 2:</b> 'Masu' ganti 'nai' (tabe + nai)<span class='cite-hidden'>[cite: 25]</span>.<br><b>Geng 3:</b> Shimasu -> shinai, Kimasu -> konai<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "吸います -> 吸わない", id: "Menghisap -> Tidak menghisap.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Tolong Jangan (〜ないで ください)",
+                    logic: "Bentuk standar buat minta orang supaya GAK ngelakuin sesuatu<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "ここで 写真を 撮らないで ください。", id: "Jangan mengambil foto di sini!<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Kewajiban Mutlak (〜なければ なりません)",
+                    logic: "Harfiahnya 'Klo nggak dilakuin, nggak boleh' = HARUS<span class='cite-hidden'>[cite: 25]</span>! Perhatiin wujudnya, ini bukan kalimat negatif ya walau pakai wujud nai<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "薬を 飲まなければ なりません。", id: "Harus minum obat.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Gak Usah / Bebas (〜なくても いいです)",
+                    logic: "Ngasih kelonggaran kalau hal itu gak dikerjain juga gak apa-apa<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "あした 来なくても いいです。", id: "Besok tidak perlu datang.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "5. Mengangkat Objek jadi Topik (は)",
+                    logic: "Seringnya objek kan pakai partikel 'o', nah di sini partikel 'o' dibuang diganti 'wa' dan ditarik ke depan biar jadi fokus pembicaraan<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "荷物は ここに 置かないで ください。", id: "Barang(nya), jangan diletakkan di sini.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "6. Tenggat Waktu (Waktu + までに)",
+                    logic: "Sering ketukar sama 'made' (sampai aksi kelar). Kalau <b>までに (made ni)</b> itu LIMIT BATAS WAKTU<span class='cite-hidden'>[cite: 25]</span>. Kerjaan harus udah rampung SELAMBAT-LAMBATNYA sebelum waktu itu<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "会議は ５時までに 終わります。", id: "Rapat selesai sebelum pukul lima.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 18,
+            title: "Bab 18: Kemampuan & Sebelum",
+            desc: "Pola Bentuk KAMUS",
+            patterns: [
+                {
+                    title: "1. Pembuatan Bentuk KAMUS",
+                    logic: "Ini wujud asli (*default*) si kata kerja sebelum dipoles<span class='cite-hidden'>[cite: 25]</span>.<br><b>Geng 1:</b> Akhiran 'i' ganti 'u' (kaki -> kaku)<span class='cite-hidden'>[cite: 25]</span>.<br><b>Geng 2:</b> 'Masu' ganti 'ru' (tabe -> taberu)<span class='cite-hidden'>[cite: 25]</span>.<br><b>Geng 3:</b> Shimasu -> suru, Kimasu -> kuru<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "飲みます -> 飲む", id: "Minum.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Mampu / Bisa (〜ことが できます)",
+                    logic: "Ngasih tau keahlian lu atau kemungkinan suatu situasi. Wajib tempelin kata <b>こと (Koto)</b> buat nyulap wujud Kamus tadi jadi Kata Benda<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "ミラーさんは 漢字を 読むことが できます。", id: "Sdr. Miller bisa membaca Kanji.<span class='cite-hidden'>[cite: 25]</span>"},
+                        {jp: "カードで 払うことが できます。", id: "Dapat membayar pakai kartu.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Ngomongin Hobi (趣味は 〜ことです)",
+                    logic: "Buat ngejelasin hobi lu lebih rinci. Ingat, harus pakai wujud 'Kamus + koto desu'<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "私の 趣味は 音楽を 聞くことです。", id: "Hobi saya adalah mendengarkan musik.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Aksi Sebelumnya (〜まえに、)",
+                    logic: "Bilang 'Sebelum ngelakuin A, gue ngelakuin B'. Ajaibnya, wujud kalimat A <b>WAJIB BENTUK KAMUS</b>, gak peduli kalimat B-nya itu di masa lalu atau masa depan<span class='cite-hidden'>[cite: 25]</span>!",
+                    examples: [
+                        {jp: "日本へ 来るまえに、日本語を 勉強しました。", id: "Sebelum datang ke Jepang, (aku udah) belajar B. Jepang.<span class='cite-hidden'>[cite: 25]</span>"},
+                        {jp: "食事の まえに、手を 洗います。", id: "Sebelum makan (Kata Benda + no), cuci tangan.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "5. Susah Tercapai (なかなか + Negatif)",
+                    logic: "Kalau hal yang lu pengenin susah banget atau jarang kejadian, pakai kata ini diiringi pola kalimat negatif<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "日本では なかなか 馬を 見ることが できません。", id: "Di Jepang tidak mudah/jarang melihat kuda.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "6. Sangat Berharap (ぜひ)",
+                    logic: "Kata penegas yang nunjukin 'SUMPAH GUE PENGEN BANGET!' atau 'POKOKNYA HARUS!'<span class='cite-hidden'>[cite: 25]</span>",
+                    examples: [
+                        {jp: "ぜひ 北海道へ 行きたいです。", id: "Ingin sekali pergi ke Hokkaido.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 19,
+            title: "Bab 19: Pengalaman & Aksi Acak",
+            desc: "Pola Bentuk TA",
+            patterns: [
+                {
+                    title: "1. Pembuatan Bentuk TA",
+                    logic: "Bentuk TA itu kembarannya Bentuk TE. Semua rumus yang pakai <b>te/de</b>, tinggal diubah aja jadi <b>ta/da</b><span class='cite-hidden'>[cite: 25]</span>. Simpel!",
+                    examples: [
+                        {jp: "書いて -> 書いた", id: "Menulis (Telah menulis).<span class='cite-hidden'>[cite: 25]</span>"},
+                        {jp: "飲んで -> 飲んだ", id: "Minum (Telah minum).<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Pengalaman Pernah (〜たことが あります)",
+                    logic: "Kalau lu mau nyombong atau ngasih tau lu <b>PERNAH</b> ngalamin sesuatu, wajib pakai bentuk ini<span class='cite-hidden'>[cite: 25]</span>.",
+                    tips: "Beda lho ya sama bentuk masa lalu biasa (~mashita). '~Mashita' cuma buat fakta yang emang udah lewat, tapi '~ta koto ga arimasu' itu fokusnya ke 'Pengalaman Lu'<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "馬に 乗ったことが あります。", id: "Pernah berkuda.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Aksi Acak Perwakilan (〜たり、〜たり します)",
+                    logic: "Lu ngelakuin banyaaaak hal di hari Minggu, tapi lu cuma mau milih 2 hal buat <b>mewakili</b> semuanya tanpa peduli urutan waktunya<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "日曜日は テニスを したり、映画を 見たり します。", id: "Hari Minggu main tenis dan nonton film (dan lain-lain).<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Perubahan Keadaan (〜なります)",
+                    logic: "Menunjukkan perubahan wujud 'Menjadi'<span class='cite-hidden'>[cite: 25]</span>.<br><b>Sifat-i:</b> 'i' dicoret ganti <b>く なります</b><span class='cite-hidden'>[cite: 25]</span>.<br><b>Sifat-na & Benda:</b> Ditambah <b>に なります</b><span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "寒く なります。", id: "Menjadi dingin.<span class='cite-hidden'>[cite: 25]</span>"},
+                        {jp: "元気 に なります。", id: "Menjadi sehat.<span class='cite-hidden'>[cite: 25]</span>"},
+                        {jp: "２５歳 に なります。", id: "Menjadi (berumur) 25 tahun.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 20,
+            title: "Bab 20: Bahasa Tongkrongan",
+            desc: "Bentuk Halus vs Bentuk Biasa (Casual)",
+            patterns: [
+                {
+                    title: "1. Konsep Bentuk Biasa",
+                    logic: "Bentuk Biasa dipakai buat ngobrol santai sama teman akrab, bawahan, keluarga, atau pas nulis *diary*<span class='cite-hidden'>[cite: 25]</span>. Ciri utamanya: Buang akhiran sopan <b>~desu</b> dan <b>~masu</b><span class='cite-hidden'>[cite: 25]</span>!",
+                    tips: "Meskipun santai, JANGAN PERNAH dipakai ke atasan atau orang yang baru kenal! Nanti dicap gak sopan<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "東京へ 行く。 (Bukan Ikimasu)", id: "Pergi ke Tokyo.<span class='cite-hidden'>[cite: 25]</span>"},
+                        {jp: "富士山に 登りたい。 (Tanpa desu)", id: "Ingin mendaki G. Fuji.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Jurus Nanya Santai",
+                    logic: "Gak perlu nambahin partikel 'か (Ka)' di belakang. Cukup naikkan nada bicara lu di suku kata terakhir<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "コーヒー 飲む？ ―― うん、飲む。", id: "Mau minum kopi? ―― Ya, minum.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Sifat/Benda (Penghilangan 'Da')",
+                    logic: "Buat jawab kalimat positif Sifat-na / Benda, kata <b>だ (Da)</b> pengganti 'desu' seringnya dibuang aja, biar gak kedengeran kasar banget<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "今晩 暇？ ―― うん、暇 / 暇よ。", id: "Nanti malam luang? ―― Ya, luang.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Partikel & Huruf Ilang",
+                    logic: "Dalam ngobrol, partikel yang maknanya udah jelas (kayak wa, o, e) suka ditiadakan<span class='cite-hidden'>[cite: 25]</span>. Terus, bentuk <b>〜て いる (~te iru)</b> sering huruf 'i'-nya dibuang jadi <b>〜てる (~teru)</b><span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "ごはん 食べる？", id: "Mau makan nasi? (Tanpa 'o')<span class='cite-hidden'>[cite: 25]</span>"},
+                        {jp: "辞書、持ってる？", id: "Punya kamus? (Bukan motte iru)<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                },
+                {
+                    title: "5. Kata Sambung Tapi (~けど)",
+                    logic: "<b>けど (Kedo)</b> ini wujud tongkrongannya dari partikel 'が (Ga)' yang artinya 'Tetapi' atau penengah pembicaraan<span class='cite-hidden'>[cite: 25]</span>.",
+                    examples: [
+                        {jp: "カレー おいしい？ ―― 辛いけど、おいしい。", id: "Kare enak? ―― Pedas, tapi enak.<span class='cite-hidden'>[cite: 25]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 21,
+            title: "Bab 21: Pendapat & Kutipan",
+            desc: "Menurutku... & Katanya...",
+            patterns: [
+                {
+                    title: "1. Mengungkapkan Pendapat (〜と 思います)",
+                    logic: "Kalau lu mau bilang 'Menurutku...' / 'Kukira...', pakai ini<span class='cite-hidden'>[cite: 26]</span>. Kalimat persis di depan partikel <b>と (To)</b> WAJIB diubah jadi wujud Bentuk Biasa<span class='cite-hidden'>[cite: 26]</span>.",
+                    tips: "Nanya pendapat orang JANGAN pakai 'to'. Langsung aja <b>どう 思いますか (Dou omoimasu ka)</b><span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "あした 雨が 降ると 思います。", id: "Saya kira besok hujan turun.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "日本は 物価が 高いと 思います。", id: "Saya pikir Jepang harga barangnya mahal.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Mengutip Ucapan (〜と 言いました)",
+                    logic: "Kalau lu mau nyeritain omongan orang lain ('Dia bilang kalau...')<span class='cite-hidden'>[cite: 26]</span>. Bisa kutip langsung pakai tanda kurung, atau dirangkum pakai Bentuk Biasa<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "ミラーさんは「来週 出張します」と 言いました。", id: "Sdr. Miller berkata 'Minggu depan dinas'.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "ミラーさんは 東京へ 出張すると 言いました。", id: "Sdr. Miller mengatakan bahwa (dia) dinas ke Tokyo.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Minta Persetujuan (〜でしょう？)",
+                    logic: "Buat mastiin tebakan lu, alias '..., kan?' atau '..., bukan?'<span class='cite-hidden'>[cite: 26]</span>. Di depannya pakai Bentuk Biasa, tapi khusus Sifat-na & Kata Benda JANGAN dikasih 'Da'<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "あした パーティーに 行くでしょう？", id: "Besok pergi ke pesta, kan?<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "北海道は 寒かったでしょう？", id: "Hokkaido dingin, bukan?<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Acara Diadakan (Tempat で Acara が あります)",
+                    logic: "Kalau konteksnya acara rame/besar (pesta, olahraga, bencana), <b>あります</b> berubah arti jadi 'Diadakan/Terjadi' di suatu tempat<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "東京で 日本と ブラジルの 試合が あります。", id: "Di Tokyo diadakan pertandingan antara Jepang dan Brasil.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "5. Singkatan Kewajiban (〜ないと...)",
+                    logic: "Dalam ngobrol, kalimat panjang <i>~nakereba narimasen</i> disingkat drastis cuma jadi <b>〜ないと (~nai to)</b> trus digantung gitu aja<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "もう 帰らないと...。", id: "(Aku) harus pulang...<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "6. Nawarin Santai (N でも V)",
+                    logic: "Nawarin sesuatu gak kaku, 'Mau minum kopi, atau apalah gitu?'<span class='cite-hidden'>[cite: 26]</span>",
+                    examples: [
+                        {jp: "ちょっと ビールでも 飲みませんか。", id: "Bagaimana kalau minum bir, atau...?<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 22,
+            title: "Bab 22: Menerangkan Kata Benda",
+            desc: "Modifikasi Noun Pakai Kalimat",
+            patterns: [
+                {
+                    title: "1. Klausa Modifikasi",
+                    logic: "Gimana cara ngomong 'Kue yang dibikin si Miller'? Susun aja kalimat 'Miller Bikin Kue' pakai <b>Bentuk Biasa</b>, lalu taruh tepat di DEPAN benda yang mau dijelasin<span class='cite-hidden'>[cite: 26]</span>.",
+                    tips: "Di Bahasa Indonesia kita pakai 'yang' di belakang (Buku <i>yang baru</i>). Di Jepang ditaruh di DEPAN (<i>Baru punya</i> Buku)<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "これは ミラーさんが 作った ケーキです。", id: "Ini adalah kue yang dibuat Sdr. Miller.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "私は ミラーさんが 住んでいた うちが 好きです。", id: "Saya suka rumah yang dihuni Sdr. Miller.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Subjek dalam Anak Kalimat",
+                    logic: "Perhatiin! Si pelaku di dalam anak kalimat penjelas (kayak Miller di contoh atas) partikelnya berubah dari 'Wa' jadi <b>が (Ga)</b><span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "私が かいた 絵", id: "Lukisan yang saya lukis.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Waktu/Janji/Urusan untuk...",
+                    logic: "Pola keren buat bilang lu punya janji ngapain. <b>[Aktivitas Wujud Kamus] + 時間 / 約束 / 用事</b><span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "私は 朝ごはんを 食べる 時間が ありません。", id: "Saya tidak ada waktu untuk makan pagi.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "友達と 映画を 見る 約束が あります。", id: "Ada janji untuk menonton film bersama teman.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 23,
+            title: "Bab 23: Waktu/Saat & Syarat Mesin",
+            desc: "Toki & To",
+            patterns: [
+                {
+                    title: "1. Menyatakan 'Ketika / Saat' (〜とき)",
+                    logic: "Buat bilang 'Waktu gue masih kecil...' atau 'Saat pinjem buku...'. Aturan penyambungannya mirip kayak nerangin kata benda<span class='cite-hidden'>[cite: 26]</span>.<br><b>Sifat-i</b> + とき<br><b>Sifat-na</b> + な + とき<br><b>Kata Benda</b> + の + とき<span class='cite-hidden'>[cite: 26]</span>",
+                    examples: [
+                        {jp: "暇な とき、うちへ 遊びに 来ませんか。", id: "Pada waktu luang, maukah main ke rumah?<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "子どもの とき、よく 川で 泳ぎました。", id: "Waktu anak-anak (kecil), sering berenang di sungai.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Bentuk Kamus vs Bentuk TA + とき",
+                    logic: "Awas ketukar!<span class='cite-hidden'>[cite: 26]</span><br><b>Kamus + Toki</b> = Waktu ngelakuin (tapi <i>belum beres/sampai</i>)<span class='cite-hidden'>[cite: 26]</span>.<br><b>Bentuk TA + Toki</b> = Sesudah kelar/nyampe ngelakuin<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "パリへ 行くとき、かばんを 買いました。", id: "Waktu (OTW/mau) pergi ke Paris, beli tas (Belinya bukan di Paris).<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "パリへ 行ったとき、かばんを 買いました。", id: "Waktu (udah nyampe) di Paris, beli tas.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Syarat Otomatis / Mutlak (〜と、)",
+                    logic: "Kalau syarat A dilakuin, pasti otomatis 100% B bakal kejadian<span class='cite-hidden'>[cite: 26]</span>. Biasanya dipakai buat mesin tombol atau petunjuk jalan belok<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "このボタンを 押すと、お釣りが 出ます。", id: "Kalau menekan tombol ini, uang kembalian akan keluar.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "右へ 曲がると、ポストが あります。", id: "Kalau belok ke kanan, ada kotak pos.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Tempat yang Dilewati Bergerak (を + Verb Gerak)",
+                    logic: "Partikel 'o' dipakai untuk menandai lokasi yang diterabas/dilewati oleh gerakan lu (nyeberang jalan, jalan-jalan di taman)<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "公園を 散歩します。", id: "Berjalan-jalan di (melewati) taman.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "橋を 渡ります。", id: "Menyeberangi jembatan.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 24,
+            title: "Bab 24: Kebaikan & Jasa",
+            desc: "Arah Memberi - Menerima",
+            patterns: [
+                {
+                    title: "1. Orang Lain Memberi (〜くれます)",
+                    logic: "Kalau di Bab 7 lu belajar 'Ageru' (Kita ngasih orang). Nah, kalau posisinya <b>ORANG LAIN ngasih ke KITA/Keluarga kita</b>, HARUS pakai <b>くれます (Kuremasu)</b><span class='cite-hidden'>[cite: 26]</span>!",
+                    examples: [
+                        {jp: "佐藤さんは 私に カードを くれました。", id: "Sdr. Sato memberikan saya kartu.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Aku Ngebantu Orang (〜て あげます)",
+                    logic: "Gue sebagai subjek utama, ngebantuin/berbuat baik buat orang lain<span class='cite-hidden'>[cite: 26]</span>.",
+                    tips: "Awas! Jangan pakai pola ini ke atasan karena kesannya lu pamrih. Kalau nawarin bantuan ke bos mending pakai '~Mashouka' (Biar saya yang...)<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "私は 木村さんに 本を 貸して あげました。", id: "Saya (berbaik hati) meminjamkan buku ke Sdr. Kimura.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Aku Dibantuin Orang (〜て もらいます)",
+                    logic: "Gue sebagai subjek utama, MENDAPATKAN jasa/bantuan dari orang lain<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "私は 山田さんに 電話番号を 教えて もらいました。", id: "Saya diberi tahu nomor telepon oleh Sdr. Yamada.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "4. Orang Itu Repot-repot Ngebantu Aku (〜て くれます)",
+                    logic: "Beda tipis! Di sini yang jadi subjek utama adalah SI ORANG LAIN itu (pakai partikel が/は)<span class='cite-hidden'>[cite: 26]</span>. Dia yang ngambil inisiatif repot-repot ngebantu/ngasih jasa ke GUE<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "母は 私に セーターを 送って くれました。", id: "Ibu mengirimkan saya sweater.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "佐藤さんが 案内して くれました。", id: "Sdr. Sato memandu (saya).<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                }
+            ]
+        },
+        {
+            num: 25,
+            title: "Bab 25: Pengandaian",
+            desc: "Kalau & Walaupun (Akhir N5!)",
+            patterns: [
+                {
+                    title: "1. Kalau / Jika (Bentuk TA + ら)",
+                    logic: "Bikin perandaian itu super gampang. Semua wujud kata (Verb/Sifat/Benda) tinggal diubah jadi wujud Lampau (TA / DATTA), terus ditambahin <b>ら (Ra)</b> di belakangnya<span class='cite-hidden'>[cite: 26]</span>.",
+                    tips: "Makin kuat kalau di depan kalimat dikasih kata <b>もし (Moshi = Seandainya)</b><span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "お金が あったら、旅行します。", id: "Kalau (seandainya) punya uang, berwisata.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "安かったら、パソコンを 買いたいです。", id: "Kalau (harganya) murah, ingin beli PC.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "暇だったら、手伝って ください。", id: "Kalau luang, tolong bantu.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "2. Kalau Nanti Udah Kelar... (V + たら)",
+                    logic: "Wujudnya sama, tapi maknanya bukan khayalan, melainkan nunggu suatu momen pasti terjadi<span class='cite-hidden'>[cite: 26]</span>. Artinya 'Kalau nanti udah kelar/nyampe...'<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "１０時に なったら、出かけましょう。", id: "Kalau (nanti) sudah jam sepuluh, mari berangkat.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "うちへ 帰ったら、すぐ シャワーを 浴びます。", id: "Kalau (nanti) sudah pulang ke rumah, saya langsung mandi.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                },
+                {
+                    title: "3. Walaupun / Meskipun (〜ても / でも)",
+                    logic: "Pengandaian yang bikin paradoks (bertentangan).<br><b>Verb:</b> Wujud TE + も<span class='cite-hidden'>[cite: 26]</span>.<br><b>Sifat-i:</b> ~kute + も<span class='cite-hidden'>[cite: 26]</span>.<br><b>Sifat-na & Benda:</b> ~de + も<span class='cite-hidden'>[cite: 26]</span>.",
+                    examples: [
+                        {jp: "雨が 降っても、洗濯します。", id: "Walaupun hujan, (saya) mencuci pakaian.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "安くても、グループ旅行が 嫌いです。", id: "Walaupun murah, saya benci tur rombongan.<span class='cite-hidden'>[cite: 26]</span>"},
+                        {jp: "日曜日でも、働きます。", id: "Walaupun hari Minggu, (saya) bekerja.<span class='cite-hidden'>[cite: 26]</span>"}
+                    ]
+                }
+            ]
+        }
+    ];
+
+    // Initialize Menu
+    function initMenu() {
+        const menuContainer = document.getElementById('menu-container');
+        chaptersData.forEach((ch, index) => {
+            const btn = document.createElement('div');
+            btn.className = 'menu-btn';
+            btn.innerHTML = `<h3>BAB ${ch.num}</h3><p>${ch.desc}</p>`;
+            btn.onclick = () => openChapter(index);
+            menuContainer.appendChild(btn);
+        });
+    }
+
+    let currentIndex = 0;
+
+    function openChapter(index) {
+        currentIndex = index;
+        document.getElementById('home-screen').style.display = 'none';
+        document.getElementById('chapter-screen').style.display = 'block';
+        window.scrollTo(0, 0);
+        renderChapter();
+    }
+
+    function goHome() {
+        document.getElementById('chapter-screen').style.display = 'none';
+        document.getElementById('home-screen').style.display = 'block';
+        window.scrollTo(0, 0);
+    }
+
+    function changeChapter(dir) {
+        const newIndex = currentIndex + dir;
+        if (newIndex >= 0 && newIndex < chaptersData.length) {
+            currentIndex = newIndex;
+            renderChapter();
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function renderChapter() {
+        const ch = chaptersData[currentIndex];
+        document.getElementById('ch-title').innerText = ch.title;
+        document.getElementById('ch-desc').innerText = ch.desc;
+        
+        let contentHtml = '';
+        
+        ch.patterns.forEach(pt => {
+            let exHtml = '';
+            pt.examples.forEach(ex => {
+                exHtml += `
+                    <div class="example-item">
+                        <span class="jp-text">${ex.jp}</span>
+                        <span class="id-text">"${ex.id}"</span>
+                    </div>
+                `;
+            });
+
+            let tipsHtml = pt.tips ? `<div class="warning-box">${pt.tips}</div>` : '';
+
+            contentHtml += `
+                <div class="pattern-card">
+                    <h2>${pt.title}</h2>
+                    <div class="logic-box">${pt.logic}</div>
+                    ${tipsHtml}
+                    <div class="example-container">
+                        <h4 style="color:#fff; margin-top:0; border-bottom:2px solid rgba(255,255,255,0.1); padding-bottom:10px;">🌟 CONTOH KALIMAT:</h4>
+                        ${exHtml}
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('ch-content').innerHTML = contentHtml;
+
+        document.getElementById('btn-prev').disabled = currentIndex === 0;
+        document.getElementById('btn-next').disabled = currentIndex === chaptersData.length - 1;
+    }
+
+    // Run on load
+    initMenu();
+
+</script>
+</body>
+</html>
